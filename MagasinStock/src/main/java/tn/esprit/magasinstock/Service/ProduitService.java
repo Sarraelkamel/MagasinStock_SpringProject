@@ -1,4 +1,49 @@
 package tn.esprit.magasinstock.Service;
 
-public class ProduitService {
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import tn.esprit.magasinstock.Entities.CategorieProduit;
+import tn.esprit.magasinstock.Entities.Produit;
+import tn.esprit.magasinstock.Entities.Stock;
+import tn.esprit.magasinstock.Repository.CategorieProduitRepository;
+import tn.esprit.magasinstock.Repository.ProduitRepository;
+import tn.esprit.magasinstock.Repository.StockRepository;
+
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+public class ProduitService implements IProduit{
+    private ProduitRepository produitRepository;
+    private CategorieProduitRepository categorieProduitRepository;
+    private StockRepository stockRepository;
+
+    @Override
+    public List<Produit> retrieveAllProduits() {
+        return produitRepository.findAll();
+    }
+
+    @Override
+    public Produit addProduit(Produit p, Long idCategorieProduit, Long idStock) {
+
+        CategorieProduit categorieProduit = categorieProduitRepository.findById(idCategorieProduit).orElse(null);
+        Stock stock = stockRepository.findById(idStock).orElse(null);
+        stock.getProduits().add(p);
+        categorieProduit.getProduits().add(p);
+        return produitRepository.save(p);
+    }
+
+    @Override
+    public Produit updateProduit(Produit p, Long idCategorieProduit, Long idStock) {
+        CategorieProduit categorieProduit = categorieProduitRepository.findById(idCategorieProduit).orElse(null);
+        Stock stock = stockRepository.findById(idStock).orElse(null);
+        categorieProduit.getProduits().add(p);
+        stock.getProduits().add(p);
+        return produitRepository.save(p);
+    }
+
+    @Override
+    public Produit retrieveProduit(Long id) {
+        return produitRepository.findById(id).orElse(null);
+    }
 }
