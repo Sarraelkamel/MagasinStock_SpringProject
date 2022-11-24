@@ -30,7 +30,7 @@ public class Fournisseur implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "fournisseur")
-    private Set<Facture> factures;
+    private Set<Facture> factures= new HashSet<>();
 
     @JsonIgnore
     @OneToOne

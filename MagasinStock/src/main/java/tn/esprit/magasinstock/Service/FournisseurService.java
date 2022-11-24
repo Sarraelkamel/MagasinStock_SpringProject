@@ -14,7 +14,7 @@ import java.util.List;
 public class FournisseurService implements IFournisseur{
 
     private FournisseurRepository fournisseurRepository;
-    private DetailFournisseurRepository detailFournisseurRepository;
+
     @Override
     public List<Fournisseur> retrieveAllFournisseurs() {
         return fournisseurRepository.findAll();
@@ -22,8 +22,6 @@ public class FournisseurService implements IFournisseur{
 
     @Override
     public Fournisseur addFournisseur(Fournisseur f) {
-        DetailFournisseur detailFournisseur = new DetailFournisseur();
-        detailFournisseurRepository.save(detailFournisseur);
         return fournisseurRepository.save(f);
     }
 
