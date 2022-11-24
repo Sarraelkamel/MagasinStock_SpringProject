@@ -26,7 +26,8 @@ public class DetailFournisseur implements Serializable {
     private String adresse;
     private String matricule;
 
+
+    @OneToOne(mappedBy = "detailFournisseur" )
     @JsonIgnore
-    @OneToOne(mappedBy = "detailFournisseur" , cascade = CascadeType.ALL)
     private Fournisseur fournisseur;
 }

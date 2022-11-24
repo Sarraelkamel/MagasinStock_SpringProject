@@ -15,5 +15,4 @@ public interface ISecteurActivite {
 
     void removeSecteurActivite (Long id);
 
-    public void assignSecteurActiviteToFournisseur(Long fournisseurId, Long secteurActiviteId) ;
 }

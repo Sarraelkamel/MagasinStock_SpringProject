@@ -15,4 +15,6 @@ public interface IStock {
     Stock retrieveStock(Long id);
 
     void removeStock(Long id);
+
+    void retrieveStatusStock();
 }

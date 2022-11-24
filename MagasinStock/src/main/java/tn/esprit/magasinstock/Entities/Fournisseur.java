@@ -32,8 +32,8 @@ public class Fournisseur implements Serializable {
     @OneToMany(mappedBy = "fournisseur")
     private Set<Facture> factures= new HashSet<>();
 
-    @JsonIgnore
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     private DetailFournisseur detailFournisseur;
 
     @JsonIgnore

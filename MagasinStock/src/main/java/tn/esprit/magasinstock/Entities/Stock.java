@@ -25,6 +25,7 @@ public class Stock implements Serializable {
     private String libelleStock;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "stock")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "stock")
+    @ToString.Exclude
     private Set<Produit> produits = new HashSet<>();
 }

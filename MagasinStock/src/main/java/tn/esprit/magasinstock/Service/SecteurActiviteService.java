@@ -42,11 +42,5 @@ public class SecteurActiviteService implements ISecteurActivite {
         secteurActiviteRepository.deleteById(id);
     }
 
-    @Override
-    public void assignSecteurActiviteToFournisseur(Long fournisseurId, Long secteurActiviteId) {
-        Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).orElse(null);
-        SecteurActivite secteurActivite = secteurActiviteRepository.findById(secteurActiviteId).orElse(null);
-        fournisseur.getSecteurActivites().add(secteurActivite);
-        fournisseurRepository.save(fournisseur);
-    }
+
 }

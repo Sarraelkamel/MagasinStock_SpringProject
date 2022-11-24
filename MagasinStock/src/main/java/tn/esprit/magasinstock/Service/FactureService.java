@@ -26,9 +26,8 @@ public class FactureService implements IFacture{
     public void cancelFacture(Long id) {
 
         Facture facture = factureRepository.findById(id).orElse(null);
-        if(facture.getArchivee() == true){
-            factureRepository.delete(facture);
-        }
+        if(facture.getArchivee()== false)
+        facture.setArchivee(true);
 
     }
 
@@ -39,7 +38,7 @@ public class FactureService implements IFacture{
 
     @Override
     public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-        return factureRepository.findByFournisseurIdFournisseur(idFournisseur); //findbyfacture
+        return factureRepository.findByFournisseurIdFournisseur(idFournisseur);
     }
 
     @Override
